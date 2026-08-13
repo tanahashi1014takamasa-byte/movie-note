@@ -5,7 +5,11 @@ movie2025Button.addEventListener("click", async function () {
   const response = await fetch("movies2025.txt");
   const text = await response.text();
 
-  movieList.innerHTML = "";
+  movie2025Button.style.display = "none";
+
+  movieList.innerHTML = `
+    <button id="backButton">戻る</button>
+  `;
 
   const lines = text.split("\n");
 
@@ -18,5 +22,10 @@ movie2025Button.addEventListener("click", async function () {
     movie.textContent = line;
 
     movieList.appendChild(movie);
+  });
+
+  document.getElementById("backButton").addEventListener("click", function () {
+    movieList.innerHTML = "";
+    movie2025Button.style.display = "block";
   });
 });
