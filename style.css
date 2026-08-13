@@ -14,7 +14,11 @@ h1 {
 #movie2022,
 #movie2023,
 #movie2024,
-#movie2025 {
+#movie2025,
+#best2022,
+#best2023,
+#best2024,
+#best2025 {
   display: block;
   width: 80%;
   max-width: 500px;
@@ -32,7 +36,11 @@ h1 {
 #movie2022:active,
 #movie2023:active,
 #movie2024:active,
-#movie2025:active {
+#movie2025:active,
+#best2022:active,
+#best2023:active,
+#best2024:active,
+#best2025:active {
   background-color: white;
   color: black;
 }
@@ -47,6 +55,22 @@ h1 {
 #movieList2023 p,
 #movieList2024 p,
 #movieList2025 p {
+  font-size: 18px;
+  border-bottom: 1px solid #555;
+  padding: 12px 0;
+}
+
+#bestList2022,
+#bestList2023,
+#bestList2024,
+#bestList2025 {
+  margin-top: 30px;
+}
+
+#bestList2022 p,
+#bestList2023 p,
+#bestList2024 p,
+#bestList2025 p {
   font-size: 18px;
   border-bottom: 1px solid #555;
   padding: 12px 0;
