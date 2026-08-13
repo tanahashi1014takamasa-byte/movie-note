@@ -1,20 +1,27 @@
 const movieButtons = [
-  { button: "movie2022", list: "list2022", file: "movies2022.txt" },
-  { button: "movie2023", list: "list2023", file: "movies2023.txt" },
-  { button: "movie2024", list: "list2024", file: "movies2024.txt" },
-  { button: "movie2025", list: "list2025", file: "movies2025.txt" }
+  { id: "movie2022", file: "movies2022.txt", list: "movieList2022" },
+  { id: "movie2023", file: "movies2023.txt", list: "movieList2023" },
+  { id: "movie2024", file: "movies2024.txt", list: "movieList2024" },
+  { id: "movie2025", file: "movies2025.txt", list: "movieList2025" }
+];
+
+const movieButtons = [
+  { id: "movie2022", file: "movies2022.txt" },
+  { id: "movie2023", file: "movies2023.txt" },
+  { id: "movie2024", file: "movies2024.txt" },
+  { id: "movie2025", file: "movies2025.txt" }
 ];
 
 movieButtons.forEach(function (movie) {
-  const button = document.getElementById(movie.button);
-  const list = document.getElementById(movie.list);
+  const button = document.getElementById(movie.id);
+  const movieList = document.getElementById(movie.list);
 
   let moviesVisible = false;
 
   button.addEventListener("click", async function () {
 
     if (moviesVisible) {
-      list.innerHTML = "";
+      movieList.innerHTML = "";
       moviesVisible = false;
       return;
     }
@@ -22,7 +29,7 @@ movieButtons.forEach(function (movie) {
     const response = await fetch(movie.file);
     const text = await response.text();
 
-    list.innerHTML = "";
+    movieList.innerHTML = "";
 
     const lines = text.split("\n");
 
@@ -34,7 +41,7 @@ movieButtons.forEach(function (movie) {
       const movieText = document.createElement("p");
       movieText.textContent = line;
 
-      list.appendChild(movieText);
+      movieList.appendChild(movieText);
     });
 
     moviesVisible = true;

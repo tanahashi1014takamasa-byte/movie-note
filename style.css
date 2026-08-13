@@ -36,12 +36,17 @@ h1 {
   background-color: white;
   color: black;
 }
-
-#movieList {
+#movieList2022,
+#movieList2023,
+#movieList2024,
+#movieList2025 {
   margin-top: 30px;
 }
 
-#movieList p {
+#movieList2022 p,
+#movieList2023 p,
+#movieList2024 p,
+#movieList2025 p {
   font-size: 18px;
   border-bottom: 1px solid #555;
   padding: 12px 0;
