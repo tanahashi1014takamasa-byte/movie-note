@@ -1,15 +1,20 @@
 const movie2025Button = document.getElementById("movie2025");
 const movieList = document.getElementById("movieList");
 
+let moviesVisible = false;
+
 movie2025Button.addEventListener("click", async function () {
+
+  if (moviesVisible) {
+    movieList.innerHTML = "";
+    moviesVisible = false;
+    return;
+  }
+
   const response = await fetch("movies2025.txt");
   const text = await response.text();
 
-  movie2025Button.style.display = "none";
-
-  movieList.innerHTML = `
-    <button id="backButton">戻る</button>
-  `;
+  movieList.innerHTML = "";
 
   const lines = text.split("\n");
 
@@ -24,8 +29,5 @@ movie2025Button.addEventListener("click", async function () {
     movieList.appendChild(movie);
   });
 
-  document.getElementById("backButton").addEventListener("click", function () {
-    movieList.innerHTML = "";
-    movie2025Button.style.display = "block";
-  });
+  moviesVisible = true;
 });
