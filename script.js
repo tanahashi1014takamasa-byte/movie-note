@@ -1,33 +1,43 @@
-const movie2025Button = document.getElementById("movie2025");
 const movieList = document.getElementById("movieList");
 
-let moviesVisible = false;
+const movieButtons = [
+  { id: "movie2022", file: "movies2022.txt" },
+  { id: "movie2023", file: "movies2023.txt" },
+  { id: "movie2024", file: "movies2024.txt" },
+  { id: "movie2025", file: "movies2025.txt" }
+];
 
-movie2025Button.addEventListener("click", async function () {
+movieButtons.forEach(function (movie) {
+  const button = document.getElementById(movie.id);
 
-  if (moviesVisible) {
-    movieList.innerHTML = "";
-    moviesVisible = false;
-    return;
-  }
+  let moviesVisible = false;
 
-  const response = await fetch("movies2025.txt");
-  const text = await response.text();
+  button.addEventListener("click", async function () {
 
-  movieList.innerHTML = "";
-
-  const lines = text.split("\n");
-
-  lines.forEach(function (line) {
-    if (line.trim() === "") {
+    if (moviesVisible) {
+      movieList.innerHTML = "";
+      moviesVisible = false;
       return;
     }
 
-    const movie = document.createElement("p");
-    movie.textContent = line;
+    const response = await fetch(movie.file);
+    const text = await response.text();
 
-    movieList.appendChild(movie);
+    movieList.innerHTML = "";
+
+    const lines = text.split("\n");
+
+    lines.forEach(function (line) {
+      if (line.trim() === "") {
+        return;
+      }
+
+      const movieText = document.createElement("p");
+      movieText.textContent = line;
+
+      movieList.appendChild(movieText);
+    });
+
+    moviesVisible = true;
   });
-
-  moviesVisible = true;
 });
