@@ -5,13 +5,6 @@ const movieButtons = [
   { id: "movie2025", file: "movies2025.txt", list: "movieList2025" }
 ];
 
-const movieButtons = [
-  { id: "movie2022", file: "movies2022.txt" },
-  { id: "movie2023", file: "movies2023.txt" },
-  { id: "movie2024", file: "movies2024.txt" },
-  { id: "movie2025", file: "movies2025.txt" }
-];
-
 movieButtons.forEach(function (movie) {
   const button = document.getElementById(movie.id);
   const movieList = document.getElementById(movie.list);
